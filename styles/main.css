@@ -1,0 +1,37 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+div, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, dt, dd, address, blockquote {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 90%;
+}
+#header {
+	margin-bottom: 1em;
+	border-bottom: 2px solid #630;
+}
+p {
+	margin-bottom: 1em;	
+}
+#footer {
+	line-height: 50px;
+	text-align: center;
+	background: #630;
+	color: #C3BC0F;
+	font-size: 0.8em;
+	padding: 0em;
+	margin: 20px auto;
+}
+#footer a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #C3BC0F;
+	display: inline-block;
+}
+.gridContainer.clearfix #footer {
+	background-color: #000000;
+}
