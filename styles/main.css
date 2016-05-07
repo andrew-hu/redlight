@@ -35,3 +35,8 @@ p {
 .gridContainer.clearfix #footer {
 	background-color: #000000;
 }
+#img02 {
+    -webkit-filter: grayscale(1); /* Webkit */
+    filter: gray; /* IE6-9 */
+    filter: grayscale(1); /* W3C */
+}
