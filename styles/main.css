@@ -2,6 +2,14 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+#progress
+{
+	width:100%;
+}
+#progress td
+{
+	color:white;
+}
 div, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, dt, dd, address, blockquote {
 	margin: 0;
 	padding: 0;

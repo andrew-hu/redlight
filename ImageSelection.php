@@ -78,7 +78,7 @@ Do the following if you're using your customized build of modernizr (http://www.
     First Name:<br><input type="text" name="firstname" id="firstname" required><br><br>
     Password:<br><input type="text" name="password" id="password" required><br><br>
     Email:<br><input type="text" name="email" id="email" required><br><br>
-    <input type="submit" value="Upload Image" name="submit" required><br>
+    <input type="submit" value="Upload and Print" name="submit" required><br>
 </form>     
    
 </div>
