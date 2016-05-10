@@ -161,29 +161,37 @@ Do the following if you're using your customized build of modernizr (http://www.
         <!-- /.container-fluid -->
       </nav>
 <div id="mainContent" class="fluid "><p><h2>Printing Progress</h2>
-<button id="kill">Kill Print Process</button> 
+<?php echo '<button id="kill" onclick="killcmd()">Kill Print Process</button>' ?>
    
 </div>
       <div id="artwork" class="fluid" ><h2>Converting/Etching Progress</h2>
 <!--div class="gallery"> <img id="img02" src="test2.gif" -->
 <?php echo '<div class="gallery"> <img id="img02" src="' . $target_file . '" >'?>
   <p class="caption"><i>Grayscale output</i></p>
-  <progress value="22" max="100">
+  <?php
+  if (file_exists ("json_prog/". $job_id ."PROG.json" )){
+    $string = file_get_contents("json_prog/". $job_id ."PROG.json" );
+  } else {
+    $string = file_get_contents("json_prog/SamplePROG.json");
+  }
+  //$string = file_get_contents("json_prog/". $job_id ."PROG.json");
+  $json = json_decode($string, true);
+  ?>
+  <progress id="progressbar" value="0" max="100">
   </progress>
   <table id="progress">
-    <tr>
-        <td>Laser Coordinates (X, Y)</td>
-        <td></td>
+  <tr>
+  <td>Laser Coordinates (X, Y)</td>
+        <td><span id="coordx"></span>,&nbsp;
+        <span id="coordy"></span></td>
     </tr>
     <tr>
-        <td>Laser Diode Voltage (V)</td>
-        <td></td>
+        <td>Temperature (Celcius)</td>
+        <td><span id="temp"></span> Degrees</td>
     </tr>
-    <tr>
-        <td>Laser Diode Current (A)</td>
-        <td></td>
-    </tr>
+
   </table>
+  
 </div>
 </div>
       <div id="footer" class="fluid "><p> Red light&trade; Ohlone college</p></div>
@@ -192,6 +200,44 @@ Do the following if you're using your customized build of modernizr (http://www.
 <script src="js/bootstrap.js"></script>
 </body>
 </html>
+<script>
 
+  setInterval(function() {
+    update();
+  }, 2000);
+
+function killcmd() {
+    <?php 
+        $myfile = fopen( "kill/" . $job_id . ".txt", "w") or die("Unable to open file!");
+        fclose($myfile);
+    ?>
+}
+
+function update() {
+    var myfile = <?php echo "\"json_prog/".$job_id ."PROG.json\""; ?>;
+
+    $.ajax({
+        url:myfile,
+        error: function()
+        {
+           
+        },
+        success: function()
+        {
+             $.getJSON( <?php echo "\"json_prog/".$job_id ."PROG.json\""; ?> , function(json) {
+            //$.getJSON("json_prog/". <?php echo $job_id; ?> ."PROG.json", function(json) {
+            //console.log(json); // this will show the info it in firebug console
+            document.getElementById("progressbar").value = json.prgrss;
+            document.getElementById("temp").innerHTML = json.temp;
+            document.getElementById("coordx").innerHTML = json.coordx;
+            document.getElementById("coordy").innerHTML = json.coordy;
+            });
+        }
+    });
+
+   
+    
+}
+</script>
 
 

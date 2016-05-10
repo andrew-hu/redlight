@@ -1,0 +1,10 @@
+{
+    "job_id" : "xxxxxx",
+    "client" : "Last, First",
+    "prgrss" : "90",
+    "ETA"    : "[1/1]: 12:00:55",
+    "prgImg" : "BASE64_ENCODED_IMAGE",
+    "coordx" : "x",
+    "coordy" : "y",
+    "temp"   : "444"
+}
